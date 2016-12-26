@@ -1,0 +1,17 @@
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-bewteen;
+    width: 450px;
+    height: 450px;
+}
+
+.tile {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    background: gray;
+    width: 100px;
+    height: 100px;
+}
