@@ -1,6 +1,6 @@
 :root {
     --tile-size: 100px;
-    --board-size: 450px;
+    --board-size: calc(4*100px + 50px);
 }
 
 .board {
