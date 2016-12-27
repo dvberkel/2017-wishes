@@ -18,11 +18,12 @@
     width: var(--tile-size);
     height: var(--tile-size);
     transform-style: preserve-3d;
+    transform-origin: right center;
     transition: transform 1s;
 }
 
 .tile.flipped {
-    transform: rotateY(180deg);
+    transform: translateX(-100%) rotateY(180deg);
 }
 
 figure {
