@@ -1,12 +1,4 @@
 (function(){
-    var tiles = [].slice.call(document.getElementsByClassName('tile'));
-    tiles.forEach(function(tile){
-        tile.addEventListener('mouseenter', function(){
-            tile.classList.add('flipped');
-        });
-
-        tile.addEventListener('mouseleave', function(){
-            tile.classList.remove('flipped');
-        });
-    });
+    var memory = document.getElementById('memory');
+    Elm.Main.embed(memory);
 })();
