@@ -1,7 +1,7 @@
 module Wish exposing (Model, Message, init, view, update, subscriptions)
 
-import Html exposing (Html,text)
-
+import Html exposing (Html, div, text, figure)
+import Html.Attributes exposing (class)
 
 type Message =
     DoNothing
@@ -22,7 +22,24 @@ init n =
 
 view: Model -> Html Message
 view model =
-    text (toString model.state)
+    div [ class "board" ] [
+          div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
+        ]
 
 
 update: Message -> Model -> (Model, Cmd Message)
