@@ -1,10 +1,10 @@
-import Wish exposing (Model)
-import Html.App exposing (program)
+import Wish exposing (Model, Message)
+import Html exposing (program)
 
 model : Model
 model = Wish.init 5
 
-main : Program Never
+main : Program Never Model Message
 main =
     program {
           init = (Wish.init 5, Cmd.none)

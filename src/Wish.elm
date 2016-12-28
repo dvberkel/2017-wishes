@@ -1,4 +1,4 @@
-module Wish exposing (Model, init, view, update, subscriptions)
+module Wish exposing (Model, Message, init, view, update, subscriptions)
 
 import Html exposing (Html,text)
 
