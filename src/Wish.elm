@@ -9,37 +9,34 @@ type Message =
 
 type alias Model =
     {
-        state: Int
+      size: Int
+    , tiles: List Int
     }
 
 
 init: Int -> Model
 init n =
     {
-        state = n
+      size = n
+    , tiles = List.range 0 (n * n - 1)
     }
 
 
 view: Model -> Html Message
 view model =
-    div [ class "board" ] [
-          div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        , div [ class "tile"] [ figure [ class "front"] [ text "1" ], figure [ class "back" ] [ text "2" ] ]
-        ]
+    div [ class "board" ] (List.map tileView model.tiles)
+
+
+tileView : Int -> Html Message
+tileView n =
+    let
+        front = toString (2*n)
+        back  = toString (2*n + 1)
+    in
+        div [ class "tile" ] [
+              figure [ class "front" ] [ text front ]
+            , figure [ class "back"  ] [ text back  ]
+            ]
 
 
 update: Message -> Model -> (Model, Cmd Message)
