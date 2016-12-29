@@ -63,7 +63,7 @@ update message model =
 
         Checking ->
             let
-                tiles = Tile.update Tile.DoNothing model.tiles
+                tiles = Tile.update Tile.Check model.tiles
                 state =
                     case message of
                         Tile.Tick -> Updating

@@ -8689,18 +8689,6 @@ var _dvberkel$wishes$Tile$turnover = function (tiles) {
 	};
 	return A2(_elm_lang$core$List$map, turnover, tiles);
 };
-var _dvberkel$wishes$Tile$update = F2(
-	function (message, tiles) {
-		var _p0 = message;
-		switch (_p0.ctor) {
-			case 'Flip':
-				return A2(_dvberkel$wishes$Tile$flip, _p0._0, tiles);
-			case 'TurnOver':
-				return _dvberkel$wishes$Tile$turnover(tiles);
-			default:
-				return tiles;
-		}
-	});
 var _dvberkel$wishes$Tile$tile = function (n) {
 	return {id: n, inspecting: false, found: false};
 };
@@ -8708,6 +8696,52 @@ var _dvberkel$wishes$Tile$tiles = function (n) {
 	var ids = A2(_elm_lang$core$List$range, 0, (n * n) - 1);
 	return A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$tile, ids);
 };
+var _dvberkel$wishes$Tile$get = F2(
+	function (xs, n) {
+		var _p0 = _elm_lang$core$List$head(
+			A2(_elm_lang$core$List$drop, n, xs));
+		if (_p0.ctor === 'Just') {
+			return _p0._0;
+		} else {
+			return _dvberkel$wishes$Tile$tile(-1);
+		}
+	});
+var _dvberkel$wishes$Tile$same = function (elements) {
+	return _elm_lang$core$Native_Utils.eq(
+		_elm_lang$core$List$length(elements),
+		2) && _elm_lang$core$Native_Utils.eq(
+		(A2(_dvberkel$wishes$Tile$get, elements, 0).id / 2) | 0,
+		(A2(_dvberkel$wishes$Tile$get, elements, 1).id / 2) | 0);
+};
+var _dvberkel$wishes$Tile$check = function (tiles) {
+	var found = function (tile) {
+		return tile.inspecting ? _elm_lang$core$Native_Utils.update(
+			tile,
+			{inspecting: false, found: true}) : tile;
+	};
+	var inspected = A2(
+		_elm_lang$core$List$filter,
+		function (t) {
+			return t.inspecting;
+		},
+		tiles);
+	var isSame = _dvberkel$wishes$Tile$same(inspected);
+	return isSame ? A2(_elm_lang$core$List$map, found, tiles) : tiles;
+};
+var _dvberkel$wishes$Tile$update = F2(
+	function (message, tiles) {
+		var _p1 = message;
+		switch (_p1.ctor) {
+			case 'Flip':
+				return A2(_dvberkel$wishes$Tile$flip, _p1._0, tiles);
+			case 'TurnOver':
+				return _dvberkel$wishes$Tile$turnover(tiles);
+			case 'Check':
+				return _dvberkel$wishes$Tile$check(tiles);
+			default:
+				return tiles;
+		}
+	});
 var _dvberkel$wishes$Tile$Model = F3(
 	function (a, b, c) {
 		return {id: a, inspecting: b, found: c};
@@ -8717,6 +8751,7 @@ var _dvberkel$wishes$Tile$Flip = function (a) {
 };
 var _dvberkel$wishes$Tile$Tick = {ctor: 'Tick'};
 var _dvberkel$wishes$Tile$TurnOver = {ctor: 'TurnOver'};
+var _dvberkel$wishes$Tile$Check = {ctor: 'Check'};
 var _dvberkel$wishes$Tile$DoNothing = {ctor: 'DoNothing'};
 var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
@@ -8862,7 +8897,7 @@ var _dvberkel$wishes$Wish$update = F2(
 						return model.state;
 					}
 				}();
-				var tiles = A2(_dvberkel$wishes$Tile$update, _dvberkel$wishes$Tile$DoNothing, model.tiles);
+				var tiles = A2(_dvberkel$wishes$Tile$update, _dvberkel$wishes$Tile$Check, model.tiles);
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(

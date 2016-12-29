@@ -36,6 +36,7 @@ tiles n =
 
 type Message =
      DoNothing
+   | Check
    | TurnOver
    | Tick
    | Flip Int
@@ -48,8 +49,43 @@ update message tiles =
 
         TurnOver -> turnover tiles
 
+        Check -> check tiles
+
         _ -> tiles
 
+
+check: Collection -> Collection
+check tiles =
+    let
+        inspected =
+            List.filter (\t -> t.inspecting) tiles
+
+        isSame =
+            same inspected
+
+        found tile =
+            if tile.inspecting then
+                { tile | inspecting = False, found = True }
+            else
+                tile
+    in
+        if isSame then
+            List.map found tiles
+        else
+            tiles
+
+
+same: Collection -> Bool
+same elements =
+        List.length elements == 2
+    && (get elements 0).id // 2 == (get elements 1).id // 2
+
+
+get: Collection -> Int -> Model
+get xs n =
+    case List.head (List.drop n xs) of
+        Just v -> v
+        Nothing -> tile -1 {- should not happen -}
 
 turnover: Collection -> Collection
 turnover tiles =
