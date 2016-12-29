@@ -8292,8 +8292,10 @@ var _dvberkel$wishes$Tile$Model = F3(
 var _dvberkel$wishes$Tile$Flip = function (a) {
 	return {ctor: 'Flip', _0: a};
 };
+var _dvberkel$wishes$Tile$DoNothing = {ctor: 'DoNothing'};
 var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
+	var msg = (!flipped) ? _dvberkel$wishes$Tile$Flip(t.id) : _dvberkel$wishes$Tile$DoNothing;
 	var n = t.id;
 	var front = _elm_lang$core$Basics$toString(2 * n);
 	var back = _elm_lang$core$Basics$toString((2 * n) + 1);
@@ -8313,8 +8315,7 @@ var _dvberkel$wishes$Tile$view = function (t) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onClick(
-					_dvberkel$wishes$Tile$Flip(t.id)),
+				_0: _elm_lang$html$Html_Events$onClick(msg),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -8350,7 +8351,6 @@ var _dvberkel$wishes$Tile$view = function (t) {
 			}
 		});
 };
-var _dvberkel$wishes$Tile$DoNothing = {ctor: 'DoNothing'};
 
 var _dvberkel$wishes$Wish$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$batch(

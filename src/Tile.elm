@@ -66,13 +66,17 @@ view t =
         flipped = t.inspecting || t.found
         front = toString (2*n)
         back  = toString (2*n + 1)
+        msg = if not flipped then
+                  Flip t.id
+              else
+                  DoNothing
     in
         div [ classList
                   [
                     ("tile", True)
                   , ("flipped", flipped)
                   ]
-            , onClick (Flip t.id)
+            , onClick msg
             ]
         [
           figure [ class "front" ] [ text front ]
