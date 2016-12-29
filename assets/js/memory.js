@@ -8804,6 +8804,7 @@ var _dvberkel$wishes$Wish$Model = F3(
 	function (a, b, c) {
 		return {size: a, state: b, tiles: c};
 	});
+var _dvberkel$wishes$Wish$Updating = {ctor: 'Updating'};
 var _dvberkel$wishes$Wish$Checking = {ctor: 'Checking'};
 var _dvberkel$wishes$Wish$Inspecting = {ctor: 'Inspecting'};
 var _dvberkel$wishes$Wish$Waiting = {ctor: 'Waiting'};
@@ -8852,10 +8853,27 @@ var _dvberkel$wishes$Wish$update = F2(
 						{state: state, tiles: tiles}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			default:
+			case 'Checking':
 				var state = function () {
 					var _p3 = message;
 					if (_p3.ctor === 'Tick') {
+						return _dvberkel$wishes$Wish$Updating;
+					} else {
+						return model.state;
+					}
+				}();
+				var tiles = A2(_dvberkel$wishes$Tile$update, _dvberkel$wishes$Tile$DoNothing, model.tiles);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{state: state, tiles: tiles}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				var state = function () {
+					var _p4 = message;
+					if (_p4.ctor === 'Tick') {
 						return _dvberkel$wishes$Wish$Waiting;
 					} else {
 						return model.state;

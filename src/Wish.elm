@@ -13,6 +13,7 @@ type State =
       Waiting
     | Inspecting
     | Checking
+    | Updating
 
 
 type alias Model =
@@ -61,6 +62,16 @@ update message model =
                 ({model | state = state, tiles = tiles}, Cmd.none)
 
         Checking ->
+            let
+                tiles = Tile.update Tile.DoNothing model.tiles
+                state =
+                    case message of
+                        Tile.Tick -> Updating
+                        _ -> model.state
+            in
+                ({model | state = state, tiles = tiles}, Cmd.none)
+
+        Updating ->
             let
                 tiles = Tile.update Tile.TurnOver model.tiles
                 state =
