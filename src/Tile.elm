@@ -1,4 +1,4 @@
-module Tile exposing (Collection, Message, tiles, view, update)
+module Tile exposing (Collection, Message (..), tiles, view, update)
 
 import Html exposing (Html, div, figure, text)
 import Html.Attributes exposing (class, classList)
@@ -36,6 +36,8 @@ tiles n =
 
 type Message =
      DoNothing
+   | TurnOver
+   | Tick
    | Flip Int
 
 
@@ -44,7 +46,18 @@ update message tiles =
     case message of
         Flip id -> flip id tiles
 
-        DoNothing -> tiles
+        TurnOver -> turnover tiles
+
+        _ -> tiles
+
+
+turnover: Collection -> Collection
+turnover tiles =
+    let
+        turnover tile =
+            { tile | inspecting = False }
+    in
+        List.map turnover tiles
 
 
 flip: Int -> Collection -> Collection
