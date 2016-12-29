@@ -8141,17 +8141,10 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
-var _dvberkel$wishes$Wish$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$batch(
-		{ctor: '[]'});
-};
-var _dvberkel$wishes$Wish$update = F2(
-	function (message, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-	});
-var _dvberkel$wishes$Wish$tileView = function (n) {
-	var back = _elm_lang$core$Basics$toString((2 * n) + 1);
+var _dvberkel$wishes$Tile$view = function (t) {
+	var n = t.id;
 	var front = _elm_lang$core$Basics$toString(2 * n);
+	var back = _elm_lang$core$Basics$toString((2 * n) + 1);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8191,6 +8184,25 @@ var _dvberkel$wishes$Wish$tileView = function (n) {
 			}
 		});
 };
+var _dvberkel$wishes$Tile$tile = function (n) {
+	return {id: n};
+};
+var _dvberkel$wishes$Tile$tiles = function (n) {
+	var ids = A2(_elm_lang$core$List$range, 0, (n * n) - 1);
+	return A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$tile, ids);
+};
+var _dvberkel$wishes$Tile$Model = function (a) {
+	return {id: a};
+};
+
+var _dvberkel$wishes$Wish$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$batch(
+		{ctor: '[]'});
+};
+var _dvberkel$wishes$Wish$update = F2(
+	function (message, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _dvberkel$wishes$Wish$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -8199,12 +8211,12 @@ var _dvberkel$wishes$Wish$view = function (model) {
 			_0: _elm_lang$html$Html_Attributes$class('board'),
 			_1: {ctor: '[]'}
 		},
-		A2(_elm_lang$core$List$map, _dvberkel$wishes$Wish$tileView, model.tiles));
+		A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$view, model.tiles));
 };
 var _dvberkel$wishes$Wish$init = function (n) {
 	return {
 		size: n,
-		tiles: A2(_elm_lang$core$List$range, 0, (n * n) - 1)
+		tiles: _dvberkel$wishes$Tile$tiles(n)
 	};
 };
 var _dvberkel$wishes$Wish$Model = F2(
@@ -8229,6 +8241,10 @@ var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _dvberkel$wishes$Main$main !== 'undefined') {
     _dvberkel$wishes$Main$main(Elm['Main'], 'Main', undefined);
+}
+Elm['Tile'] = Elm['Tile'] || {};
+if (typeof _dvberkel$wishes$Tile$main !== 'undefined') {
+    _dvberkel$wishes$Tile$main(Elm['Tile'], 'Tile', undefined);
 }
 Elm['Wish'] = Elm['Wish'] || {};
 if (typeof _dvberkel$wishes$Wish$main !== 'undefined') {
