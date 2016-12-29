@@ -1,7 +1,9 @@
-module Tile exposing (Collection, tiles, view)
+module Tile exposing (Collection, Message, tiles, view, update)
 
 import Html exposing (Html, div, figure, text)
 import Html.Attributes exposing (class, classList)
+import Html.Events exposing (onClick)
+
 
 type alias Model =
     {
@@ -31,7 +33,33 @@ tiles n =
     in
         List.map tile ids
 
-view : Model -> Html a
+
+type Message =
+     DoNothing
+   | Flip Int
+
+
+update: Message -> Collection -> Collection
+update message tiles =
+    case message of
+        Flip id -> flip id tiles
+
+        DoNothing -> tiles
+
+
+flip: Int -> Collection -> Collection
+flip id tiles =
+    let
+        flip id tile =
+            if tile.id == id then
+                { tile | inspecting = not tile.inspecting }
+            else
+                tile
+    in
+        List.map (flip id) tiles
+
+
+view : Model -> Html Message
 view t =
     let
         n = t.id
@@ -44,6 +72,7 @@ view t =
                     ("tile", True)
                   , ("flipped", flipped)
                   ]
+            , onClick (Flip t.id)
             ]
         [
           figure [ class "front" ] [ text front ]

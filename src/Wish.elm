@@ -5,8 +5,7 @@ import Html.Attributes exposing (class)
 import Tile exposing (tiles)
 
 
-type Message =
-    DoNothing
+type alias Message = Tile.Message
 
 
 type alias Model =
@@ -24,14 +23,17 @@ init n =
     }
 
 
-view: Model -> Html Message
+view: Model -> Html Tile.Message
 view model =
     div [ class "board" ] (List.map Tile.view  model.tiles)
 
 
 update: Message -> Model -> (Model, Cmd Message)
 update message model =
-    (model, Cmd.none)
+    let
+        tiles = Tile.update message model.tiles
+    in
+        ({model | tiles = tiles}, Cmd.none)
 
 
 subscriptions: Model -> Sub Message

@@ -8141,6 +8141,157 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
+var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
+var _elm_lang$html$Html_Events$targetChecked = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'checked',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$bool);
+var _elm_lang$html$Html_Events$targetValue = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'value',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$string);
+var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
+var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
+var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
+var _elm_lang$html$Html_Events$onFocus = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'focus',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onBlur = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'blur',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
+	_elm_lang$html$Html_Events$defaultOptions,
+	{preventDefault: true});
+var _elm_lang$html$Html_Events$onSubmit = function (msg) {
+	return A3(
+		_elm_lang$html$Html_Events$onWithOptions,
+		'submit',
+		_elm_lang$html$Html_Events$onSubmitOptions,
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onCheck = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'change',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
+};
+var _elm_lang$html$Html_Events$onInput = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'input',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
+};
+var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseout',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseover',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseleave',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseenter',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseup',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mousedown',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'dblclick',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'click',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$Options = F2(
+	function (a, b) {
+		return {stopPropagation: a, preventDefault: b};
+	});
+
+var _dvberkel$wishes$Tile$flip = F2(
+	function (id, tiles) {
+		var flip = F2(
+			function (id, tile) {
+				return _elm_lang$core$Native_Utils.eq(tile.id, id) ? _elm_lang$core$Native_Utils.update(
+					tile,
+					{inspecting: !tile.inspecting}) : tile;
+			});
+		return A2(
+			_elm_lang$core$List$map,
+			flip(id),
+			tiles);
+	});
+var _dvberkel$wishes$Tile$update = F2(
+	function (message, tiles) {
+		var _p0 = message;
+		if (_p0.ctor === 'Flip') {
+			return A2(_dvberkel$wishes$Tile$flip, _p0._0, tiles);
+		} else {
+			return tiles;
+		}
+	});
+var _dvberkel$wishes$Tile$tile = function (n) {
+	return {id: n, inspecting: false, found: false};
+};
+var _dvberkel$wishes$Tile$tiles = function (n) {
+	var ids = A2(_elm_lang$core$List$range, 0, (n * n) - 1);
+	return A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$tile, ids);
+};
+var _dvberkel$wishes$Tile$Model = F3(
+	function (a, b, c) {
+		return {id: a, inspecting: b, found: c};
+	});
+var _dvberkel$wishes$Tile$Flip = function (a) {
+	return {ctor: 'Flip', _0: a};
+};
 var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
 	var n = t.id;
@@ -8160,7 +8311,12 @@ var _dvberkel$wishes$Tile$view = function (t) {
 						_1: {ctor: '[]'}
 					}
 				}),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Events$onClick(
+					_dvberkel$wishes$Tile$Flip(t.id)),
+				_1: {ctor: '[]'}
+			}
 		},
 		{
 			ctor: '::',
@@ -8194,17 +8350,7 @@ var _dvberkel$wishes$Tile$view = function (t) {
 			}
 		});
 };
-var _dvberkel$wishes$Tile$tile = function (n) {
-	return {id: n, inspecting: false, found: false};
-};
-var _dvberkel$wishes$Tile$tiles = function (n) {
-	var ids = A2(_elm_lang$core$List$range, 0, (n * n) - 1);
-	return A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$tile, ids);
-};
-var _dvberkel$wishes$Tile$Model = F3(
-	function (a, b, c) {
-		return {id: a, inspecting: b, found: c};
-	});
+var _dvberkel$wishes$Tile$DoNothing = {ctor: 'DoNothing'};
 
 var _dvberkel$wishes$Wish$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$batch(
@@ -8212,7 +8358,14 @@ var _dvberkel$wishes$Wish$subscriptions = function (model) {
 };
 var _dvberkel$wishes$Wish$update = F2(
 	function (message, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var tiles = A2(_dvberkel$wishes$Tile$update, message, model.tiles);
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.update(
+				model,
+				{tiles: tiles}),
+			_1: _elm_lang$core$Platform_Cmd$none
+		};
 	});
 var _dvberkel$wishes$Wish$view = function (model) {
 	return A2(
@@ -8234,7 +8387,6 @@ var _dvberkel$wishes$Wish$Model = F2(
 	function (a, b) {
 		return {size: a, tiles: b};
 	});
-var _dvberkel$wishes$Wish$DoNothing = {ctor: 'DoNothing'};
 
 var _dvberkel$wishes$Main$main = _elm_lang$html$Html$program(
 	{
