@@ -1,11 +1,13 @@
 module Tile exposing (Collection, tiles, view)
 
 import Html exposing (Html, div, figure, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, classList)
 
 type alias Model =
     {
       id: Int
+    , inspecting: Bool
+    , found: Bool
     }
 
 
@@ -17,6 +19,8 @@ tile: Int -> Model
 tile n =
     {
       id = n
+    , inspecting = False
+    , found = False
     }
 
 
@@ -31,10 +35,17 @@ view : Model -> Html a
 view t =
     let
         n = t.id
+        flipped = t.inspecting || t.found
         front = toString (2*n)
         back  = toString (2*n + 1)
     in
-        div [ class "tile" ] [
-              figure [ class "front" ] [ text front ]
-            , figure [ class "back"  ] [ text back  ]
+        div [ classList
+                  [
+                    ("tile", True)
+                  , ("flipped", flipped)
+                  ]
             ]
+        [
+          figure [ class "front" ] [ text front ]
+        , figure [ class "back"  ] [ text back  ]
+        ]

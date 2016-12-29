@@ -8142,6 +8142,7 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
 var _dvberkel$wishes$Tile$view = function (t) {
+	var flipped = t.inspecting || t.found;
 	var n = t.id;
 	var front = _elm_lang$core$Basics$toString(2 * n);
 	var back = _elm_lang$core$Basics$toString((2 * n) + 1);
@@ -8149,7 +8150,16 @@ var _dvberkel$wishes$Tile$view = function (t) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('tile'),
+			_0: _elm_lang$html$Html_Attributes$classList(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'tile', _1: true},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'flipped', _1: flipped},
+						_1: {ctor: '[]'}
+					}
+				}),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -8185,15 +8195,16 @@ var _dvberkel$wishes$Tile$view = function (t) {
 		});
 };
 var _dvberkel$wishes$Tile$tile = function (n) {
-	return {id: n};
+	return {id: n, inspecting: false, found: false};
 };
 var _dvberkel$wishes$Tile$tiles = function (n) {
 	var ids = A2(_elm_lang$core$List$range, 0, (n * n) - 1);
 	return A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$tile, ids);
 };
-var _dvberkel$wishes$Tile$Model = function (a) {
-	return {id: a};
-};
+var _dvberkel$wishes$Tile$Model = F3(
+	function (a, b, c) {
+		return {id: a, inspecting: b, found: c};
+	});
 
 var _dvberkel$wishes$Wish$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$batch(
