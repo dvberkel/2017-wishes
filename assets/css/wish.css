@@ -26,6 +26,31 @@
     transform: translateX(-100%) rotateY(180deg);
 }
 
+.tile.found {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translateX(-100%) rotateY(180deg);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(calc(-100% - 1px)) rotateY(180deg);
+  }
+
+  20%, 80% {
+    transform: translateX(calc(-100% + 2px)) rotateY(180deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translateX(calc(-100% - 4px)) rotateY(180deg);
+  }
+
+  40%, 60% {
+    transform: translateX(calc(-100% + 4px)) rotateY(180deg);
+  }
+}
+
 figure {
     margin: 0;
     display: block;
