@@ -3,11 +3,17 @@
     --board-size: calc(4*var(--tile-size) + 50px);
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 .board {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-content: space-bewteen;
+    align-content: space-between;
     width: var(--board-size);
     height: var(--board-size);
     perspective: 800px;
