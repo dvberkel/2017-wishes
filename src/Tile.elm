@@ -113,8 +113,7 @@ view t =
     let
         n = t.id
         flipped = t.inspecting || t.found
-        front = toString (2*n)
-        back  = toString (2*n + 1)
+        front = toString (n // 2)
         msg = if not flipped then
                   Flip t.id
               else
@@ -129,5 +128,5 @@ view t =
             ]
         [
           figure [ class "front" ] [ text front ]
-        , figure [ class "back"  ] [ text back  ]
+        , figure [ class "back"  ] [ ]
         ]

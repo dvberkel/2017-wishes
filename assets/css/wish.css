@@ -42,9 +42,9 @@ figure {
 
 figure.front {
     background: red;
+    transform: rotateY(180deg);
 }
 
 figure.back {
     background: blue;
-    transform: rotateY(180deg);
 }

@@ -8757,8 +8757,7 @@ var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
 	var msg = (!flipped) ? _dvberkel$wishes$Tile$Flip(t.id) : _dvberkel$wishes$Tile$DoNothing;
 	var n = t.id;
-	var front = _elm_lang$core$Basics$toString(2 * n);
-	var back = _elm_lang$core$Basics$toString((2 * n) + 1);
+	var front = _elm_lang$core$Basics$toString((n / 2) | 0);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8802,11 +8801,7 @@ var _dvberkel$wishes$Tile$view = function (t) {
 						_0: _elm_lang$html$Html_Attributes$class('back'),
 						_1: {ctor: '[]'}
 					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(back),
-						_1: {ctor: '[]'}
-					}),
+					{ctor: '[]'}),
 				_1: {ctor: '[]'}
 			}
 		});
