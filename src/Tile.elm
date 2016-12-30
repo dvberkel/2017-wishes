@@ -123,6 +123,7 @@ view t =
                   [
                     ("tile", True)
                   , ("flipped", flipped)
+                  , ("found", t.found)
                   ]
             , onClick msg
             ]

@@ -8769,7 +8769,11 @@ var _dvberkel$wishes$Tile$view = function (t) {
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'flipped', _1: flipped},
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'found', _1: t.found},
+							_1: {ctor: '[]'}
+						}
 					}
 				}),
 			_1: {
