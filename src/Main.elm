@@ -5,7 +5,10 @@ import Random.List exposing (shuffle)
 
 
 wish: String
-wish = "Hello, World"
+wish = """
+# Happy New Year
+We want to wish you a beautiful 2017 and hope that your dreams will come true.
+"""
 
 
 main : Program Never Model Message

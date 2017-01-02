@@ -4,6 +4,7 @@ import Html exposing (Html, div, text, figure)
 import Html.Attributes exposing (class, classList)
 import Time exposing (Time, second)
 import Random exposing (Seed, initialSeed)
+import Markdown exposing (toHtml)
 import Tile exposing (tiles, isSolved)
 
 
@@ -51,13 +52,14 @@ view model =
         div []
             [
               div [ class "board" ] (List.map Tile.view  model.tiles)
-            , div [ classList
-                        [
-                          ("wish", True)
-                        , ("solved", solved)
-                        ]
-                  ] [ text model.wish]
+            ,  toHtml [ classList
+                            [
+                              ("wish", True)
+                            , ("solved", solved)
+                            ]
+                      ] model.wish
             ]
+
 
 update: Message -> Model -> (Model, Cmd Message)
 update message model =
