@@ -51,7 +51,12 @@ view model =
     in
         div []
             [
-              div [ class "board" ] (List.map Tile.view  model.tiles)
+              div [ classList
+                        [
+                          ("board", True)
+                        , ("solved", solved)
+                        ]
+                  ] (List.map Tile.view  model.tiles)
             ,  toHtml [ classList
                             [
                               ("wish", True)

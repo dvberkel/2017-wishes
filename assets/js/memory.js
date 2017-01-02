@@ -9370,7 +9370,16 @@ var _dvberkel$wishes$Wish$view = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('board'),
+					_0: _elm_lang$html$Html_Attributes$classList(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'board', _1: true},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'solved', _1: solved},
+								_1: {ctor: '[]'}
+							}
+						}),
 					_1: {ctor: '[]'}
 				},
 				A2(_elm_lang$core$List$map, _dvberkel$wishes$Tile$view, model.tiles)),
