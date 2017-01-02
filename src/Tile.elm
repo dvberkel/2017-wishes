@@ -114,7 +114,6 @@ view t =
         n = t.id
         id = "id-" ++ (toString n)
         flipped = t.inspecting || t.found
-        front = toString (n // 2)
         msg = if not flipped then
                   Flip t.id
               else
@@ -130,6 +129,6 @@ view t =
             , onClick msg
             ]
         [
-          figure [ class "front" ] [ text front ]
+          figure [ class "front" ] [ ]
         , figure [ class "back"  ] [ ]
         ]

@@ -8761,7 +8761,6 @@ var _dvberkel$wishes$Tile$view = function (t) {
 		_elm_lang$core$Basics_ops['++'],
 		'id-',
 		_elm_lang$core$Basics$toString(n));
-	var front = _elm_lang$core$Basics$toString((n / 2) | 0);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8799,11 +8798,7 @@ var _dvberkel$wishes$Tile$view = function (t) {
 					_0: _elm_lang$html$Html_Attributes$class('front'),
 					_1: {ctor: '[]'}
 				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(front),
-					_1: {ctor: '[]'}
-				}),
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
 				_0: A2(
