@@ -112,6 +112,7 @@ view : Model -> Html Message
 view t =
     let
         n = t.id
+        id = "id-" ++ (toString n)
         flipped = t.inspecting || t.found
         front = toString (n // 2)
         msg = if not flipped then
@@ -122,6 +123,7 @@ view t =
         div [ classList
                   [
                     ("tile", True)
+                  , (id, True)
                   , ("flipped", flipped)
                   , ("found", t.found)
                   ]

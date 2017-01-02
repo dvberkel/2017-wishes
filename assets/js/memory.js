@@ -8757,6 +8757,10 @@ var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
 	var msg = (!flipped) ? _dvberkel$wishes$Tile$Flip(t.id) : _dvberkel$wishes$Tile$DoNothing;
 	var n = t.id;
+	var id = A2(
+		_elm_lang$core$Basics_ops['++'],
+		'id-',
+		_elm_lang$core$Basics$toString(n));
 	var front = _elm_lang$core$Basics$toString((n / 2) | 0);
 	return A2(
 		_elm_lang$html$Html$div,
@@ -8768,11 +8772,15 @@ var _dvberkel$wishes$Tile$view = function (t) {
 					_0: {ctor: '_Tuple2', _0: 'tile', _1: true},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'flipped', _1: flipped},
+						_0: {ctor: '_Tuple2', _0: id, _1: true},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'found', _1: t.found},
-							_1: {ctor: '[]'}
+							_0: {ctor: '_Tuple2', _0: 'flipped', _1: flipped},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'found', _1: t.found},
+								_1: {ctor: '[]'}
+							}
 						}
 					}
 				}),
