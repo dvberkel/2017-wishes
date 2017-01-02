@@ -8928,7 +8928,7 @@ var _dvberkel$wishes$Main$main = _elm_lang$html$Html$program(
 	{
 		init: {
 			ctor: '_Tuple2',
-			_0: _dvberkel$wishes$Wish$init(4),
+			_0: _dvberkel$wishes$Wish$init(6),
 			_1: _elm_lang$core$Platform_Cmd$none
 		},
 		view: _dvberkel$wishes$Wish$view,

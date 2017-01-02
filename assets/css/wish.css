@@ -1,12 +1,12 @@
 :root {
-    --tile-size: 200px;
-    --board-size: calc(4*var(--tile-size) + 50px);
+    --tile-size: 130px;
+    --board-size: calc(6*var(--tile-size) + 50px);
 }
 
 body {
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: flex-end;
 }
 
 .board {
