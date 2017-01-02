@@ -19,7 +19,7 @@ body {
     perspective: 800px;
 }
 
-board.solved {
+.board.solved {
     filter: blur(3px);
 }
 
@@ -244,4 +244,14 @@ div.wish.solved {
     color: white;
     background-color: rgba(0, 0, 0, 0.75);
     padding-top: 200px;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+div.wish.solved h1 {
+    margin-bottom: 1em;
+}
+
+div.wish.solved p:last-child {
+    margin-top: 2em;
 }

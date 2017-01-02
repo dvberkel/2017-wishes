@@ -9889,7 +9889,7 @@ var _dvberkel$wishes$Main$mix = function (model) {
 		model,
 		{seed: seed, tiles: tiles});
 };
-var _dvberkel$wishes$Main$wish = '\n# Happy New Year\nWe want to wish you a beautiful 2017 and hope that your dreams will come true.\n';
+var _dvberkel$wishes$Main$wish = '\n# Gelukkig Nieuwjaar\nWij willen jullie een heel warm, fijn en gelukkig nieuwjaar wensen.\n\nHopelijk wordt het een jaar waarin wij veel van elkaar mogen genieten.\n\nLiefs\nDaan, Marlies, Sophie, Robin & Hannah\n';
 var _dvberkel$wishes$Main$main = function () {
 	var model = _dvberkel$wishes$Main$mix(
 		A2(_dvberkel$wishes$Wish$start, 6, _dvberkel$wishes$Main$wish));

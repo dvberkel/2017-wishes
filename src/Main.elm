@@ -6,8 +6,13 @@ import Random.List exposing (shuffle)
 
 wish: String
 wish = """
-# Happy New Year
-We want to wish you a beautiful 2017 and hope that your dreams will come true.
+# Gelukkig Nieuwjaar
+Wij willen jullie een heel warm, fijn en gelukkig nieuwjaar wensen.
+
+Hopelijk wordt het een jaar waarin wij veel van elkaar mogen genieten.
+
+Liefs
+Daan, Marlies, Sophie, Robin & Hannah
 """
 
 
