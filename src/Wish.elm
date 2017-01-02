@@ -1,9 +1,10 @@
-module Wish exposing (Model, Message, init, view, update, subscriptions)
+module Wish exposing (Model, Message, start, view, update, subscriptions)
 
 import Html exposing (Html, div, text, figure)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, classList)
 import Time exposing (Time, second)
-import Tile exposing (tiles)
+import Random exposing (Seed, initialSeed)
+import Tile exposing (tiles, isSolved)
 
 
 type alias Message = Tile.Message
@@ -19,24 +20,44 @@ type State =
 type alias Model =
     {
       size: Int
+    , seed: Seed
     , state: State
     , tiles: Tile.Collection
+    , wish: String
     }
 
 
-init: Int -> Model
-init n =
+start: Int -> String -> Model
+start n wish =
+    init (tiles n) wish
+
+
+init: Tile.Collection -> String -> Model
+init ts wish =
     {
-      size = n
+      size = List.length ts
+    , seed = initialSeed 0
     , state = Waiting
-    , tiles = tiles n
+    , tiles = ts
+    , wish = wish
     }
 
 
 view: Model -> Html Tile.Message
 view model =
-    div [ class "board" ] (List.map Tile.view  model.tiles)
-
+    let
+        solved = isSolved model.tiles
+    in
+        div []
+            [
+              div [ class "board" ] (List.map Tile.view  model.tiles)
+            , div [ classList
+                        [
+                          ("wish", True)
+                        , ("solved", solved)
+                        ]
+                  ] [ text model.wish]
+            ]
 
 update: Message -> Model -> (Model, Cmd Message)
 update message model =

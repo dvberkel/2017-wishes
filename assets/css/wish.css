@@ -223,3 +223,11 @@ figure.back {
 .tile.id-35 figure.front {
     background-position: calc(var(--tile-size) * -35) 0;
 }
+
+div.wish {
+    display: none;
+}
+
+div.wish.solved {
+    display: block;
+}

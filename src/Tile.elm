@@ -1,4 +1,4 @@
-module Tile exposing (Collection, Message (..), tiles, view, update)
+module Tile exposing (Collection, Message (..), tiles, view, update, isSolved)
 
 import Html exposing (Html, div, figure, text)
 import Html.Attributes exposing (class, classList)
@@ -106,6 +106,16 @@ flip id tiles =
                 tile
     in
         List.map (flip id) tiles
+
+isSolved: Collection -> Bool
+isSolved tiles =
+    let
+        isFound t =
+            t.found
+
+        found = List.map isFound tiles
+    in
+        List.foldr (&&) True found
 
 
 view : Model -> Html Message
