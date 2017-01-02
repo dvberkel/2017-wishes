@@ -19,7 +19,7 @@ body {
     perspective: 800px;
 }
 
-.tile {
+.tile.tile  {
     background: gray;
     width: var(--tile-size);
     height: var(--tile-size);
@@ -72,10 +72,154 @@ figure {
 }
 
 figure.front {
-    background: red;
+    background-image: url("../image/wish.png");
     transform: rotateY(180deg);
 }
 
 figure.back {
     background: blue;
+}
+
+.tile.id-0 figure.front {
+    background-position: calc(var(--tile-size) * -0) 0;
+}
+
+.tile.id-1 figure.front {
+    background-position: calc(var(--tile-size) * -1) 0;
+}
+
+.tile.id-2 figure.front {
+    background-position: calc(var(--tile-size) * -2) 0;
+}
+
+.tile.id-3 figure.front {
+    background-position: calc(var(--tile-size) * -3) 0;
+}
+
+.tile.id-4 figure.front {
+    background-position: calc(var(--tile-size) * -4) 0;
+}
+
+.tile.id-5 figure.front {
+    background-position: calc(var(--tile-size) * -5) 0;
+}
+
+.tile.id-6 figure.front {
+    background-position: calc(var(--tile-size) * -6) 0;
+}
+
+.tile.id-7 figure.front {
+    background-position: calc(var(--tile-size) * -7) 0;
+}
+
+.tile.id-8 figure.front {
+    background-position: calc(var(--tile-size) * -8) 0;
+}
+
+.tile.id-9 figure.front {
+    background-position: calc(var(--tile-size) * -8) 0;
+}
+
+.tile.id-10 figure.front {
+    background-position: calc(var(--tile-size) * -10) 0;
+}
+
+.tile.id-11 figure.front {
+    background-position: calc(var(--tile-size) * -11) 0;
+}
+
+.tile.id-12 figure.front {
+    background-position: calc(var(--tile-size) * -12) 0;
+}
+
+.tile.id-13 figure.front {
+    background-position: calc(var(--tile-size) * -13) 0;
+}
+
+.tile.id-14 figure.front {
+    background-position: calc(var(--tile-size) * -14) 0;
+}
+
+.tile.id-15 figure.front {
+    background-position: calc(var(--tile-size) * -15) 0;
+}
+
+.tile.id-16 figure.front {
+    background-position: calc(var(--tile-size) * -16) 0;
+}
+
+.tile.id-17 figure.front {
+    background-position: calc(var(--tile-size) * -17) 0;
+}
+
+.tile.id-18 figure.front {
+    background-position: calc(var(--tile-size) * -18) 0;
+}
+
+.tile.id-19 figure.front {
+    background-position: calc(var(--tile-size) * -19) 0;
+}
+
+.tile.id-20 figure.front {
+    background-position: calc(var(--tile-size) * -20) 0;
+}
+
+.tile.id-21 figure.front {
+    background-position: calc(var(--tile-size) * -21) 0;
+}
+
+.tile.id-22 figure.front {
+    background-position: calc(var(--tile-size) * -22) 0;
+}
+
+.tile.id-23 figure.front {
+    background-position: calc(var(--tile-size) * -23) 0;
+}
+
+.tile.id-24 figure.front {
+    background-position: calc(var(--tile-size) * -24) 0;
+}
+
+.tile.id-25 figure.front {
+    background-position: calc(var(--tile-size) * -25) 0;
+}
+
+.tile.id-26 figure.front {
+    background-position: calc(var(--tile-size) * -26) 0;
+}
+
+.tile.id-27 figure.front {
+    background-position: calc(var(--tile-size) * -27) 0;
+}
+
+.tile.id-28 figure.front {
+    background-position: calc(var(--tile-size) * -28) 0;
+}
+
+.tile.id-29 figure.front {
+    background-position: calc(var(--tile-size) * -29) 0;
+}
+
+.tile.id-30 figure.front {
+    background-position: calc(var(--tile-size) * -30) 0;
+}
+
+.tile.id-31 figure.front {
+    background-position: calc(var(--tile-size) * -31) 0;
+}
+
+.tile.id-32 figure.front {
+    background-position: calc(var(--tile-size) * -32) 0;
+}
+
+.tile.id-33 figure.front {
+    background-position: calc(var(--tile-size) * -33) 0;
+}
+
+.tile.id-34 figure.front {
+    background-position: calc(var(--tile-size) * -34) 0;
+}
+
+.tile.id-35 figure.front {
+    background-position: calc(var(--tile-size) * -35) 0;
 }
