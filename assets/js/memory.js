@@ -9270,6 +9270,8 @@ var _dvberkel$wishes$Tile$update = F2(
 				return _dvberkel$wishes$Tile$turnover(tiles);
 			case 'Check':
 				return _dvberkel$wishes$Tile$check(tiles);
+			case 'Shuffled':
+				return _p1._0;
 			default:
 				return tiles;
 		}
@@ -9284,6 +9286,9 @@ var _dvberkel$wishes$Tile$Flip = function (a) {
 var _dvberkel$wishes$Tile$Tick = {ctor: 'Tick'};
 var _dvberkel$wishes$Tile$TurnOver = {ctor: 'TurnOver'};
 var _dvberkel$wishes$Tile$Check = {ctor: 'Check'};
+var _dvberkel$wishes$Tile$Shuffled = function (a) {
+	return {ctor: 'Shuffled', _0: a};
+};
 var _dvberkel$wishes$Tile$DoNothing = {ctor: 'DoNothing'};
 var _dvberkel$wishes$Tile$view = function (t) {
 	var flipped = t.inspecting || t.found;
@@ -9878,24 +9883,19 @@ var _elm_community$random_extra$Random_List$shuffle = function (list) {
 	}
 };
 
-var _dvberkel$wishes$Main$mix = function (model) {
-	var _p0 = A2(
-		_elm_lang$core$Random$step,
-		_elm_community$random_extra$Random_List$shuffle(model.tiles),
-		model.seed);
-	var tiles = _p0._0;
-	var seed = _p0._1;
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{seed: seed, tiles: tiles});
-};
 var _dvberkel$wishes$Main$wish = '\n# Gelukkig Nieuwjaar\nWij willen jullie een heel warm, fijn en gelukkig nieuwjaar wensen.\n\nHopelijk wordt het een jaar waarin wij veel van elkaar mogen genieten.\n\nLiefs\nDaan, Marlies, Sophie, Robin & Hannah\n';
 var _dvberkel$wishes$Main$main = function () {
-	var model = _dvberkel$wishes$Main$mix(
-		A2(_dvberkel$wishes$Wish$start, 6, _dvberkel$wishes$Main$wish));
+	var model = A2(_dvberkel$wishes$Wish$start, 6, _dvberkel$wishes$Main$wish);
 	return _elm_lang$html$Html$program(
 		{
-			init: {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none},
+			init: {
+				ctor: '_Tuple2',
+				_0: model,
+				_1: A2(
+					_elm_lang$core$Random$generate,
+					_dvberkel$wishes$Tile$Shuffled,
+					_elm_community$random_extra$Random_List$shuffle(model.tiles))
+			},
 			view: _dvberkel$wishes$Wish$view,
 			update: _dvberkel$wishes$Wish$update,
 			subscriptions: _dvberkel$wishes$Wish$subscriptions

@@ -1,4 +1,5 @@
 import Wish exposing (Model, Message)
+import Tile
 import Html exposing (program)
 import Random exposing (step)
 import Random.List exposing (shuffle)
@@ -19,19 +20,12 @@ Daan, Marlies, Sophie, Robin & Hannah
 main : Program Never Model Message
 main =
     let
-        model = mix (Wish.start 6 wish)
+        model = Wish.start 6 wish
     in
         program
         {
-          init = (model, Cmd.none)
+          init = (model, Random.generate Tile.Shuffled (shuffle model.tiles))
         , view = Wish.view
         , update = Wish.update
         , subscriptions = Wish.subscriptions
         }
-
-mix : Model -> Model
-mix model =
-    let
-       (tiles, seed) = step (shuffle model.tiles) model.seed
-    in
-        { model | seed = seed, tiles = tiles }

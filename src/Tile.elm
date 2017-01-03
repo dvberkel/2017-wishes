@@ -36,6 +36,7 @@ tiles n =
 
 type Message =
      DoNothing
+   | Shuffled Collection
    | Check
    | TurnOver
    | Tick
@@ -50,6 +51,8 @@ update message tiles =
         TurnOver -> turnover tiles
 
         Check -> check tiles
+
+        Shuffled next -> next
 
         _ -> tiles
 
